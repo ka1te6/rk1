@@ -12,6 +12,13 @@ add_library(BridgeLib STATIC
     src/modbus.cpp
 )
 
+set(CPACK_PACKAGE_NAME "Bridge")
+set(CPACK_PACKAGE_VERSION "1.0.0")
+set(CPACK_PACKAGE_DESCRIPTION "Bridge communication library")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "ka1te6 a.andrey2006@yandex.ru")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.14)")
+include(CPack)
+
 add_executable(BridgeApp main.cpp)
 target_link_libraries(BridgeApp BridgeLib)
 enable_testing()
