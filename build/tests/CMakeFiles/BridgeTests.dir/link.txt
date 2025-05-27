@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/BridgeTests.dir/test_hdlc.cpp.o CMakeFiles/BridgeTests.dir/test_modbus.cpp.o -o BridgeTests  ../libBridgeLib.a /usr/lib/x86_64-linux-gnu/libgtest_main.a /usr/lib/x86_64-linux-gnu/libgtest.a 
