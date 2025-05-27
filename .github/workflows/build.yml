@@ -5,6 +5,9 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:  # Добавляем права для токена
+      contents: write
+
     steps:
     - uses: actions/checkout@v4
 
@@ -30,21 +33,10 @@ jobs:
         cd build
         cpack -G DEB
 
-    - name: Create Git Tag
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const tag = `v1.0.0-${process.env.GITHUB_RUN_NUMBER}`;
-          await github.rest.git.createRef({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            ref: `refs/tags/${tag}`,
-            sha: context.sha
-          });
-          return tag;
-
-    - name: Upload Release
+    - name: Create Tag and Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: v1.0.0-${{ github.run_number }}
+        name: Release v1.0.0-${{ github.run_number }}
         files: build/*.deb
+        generate_release_notes: true
