@@ -28,9 +28,23 @@ jobs:
     - name: Create DEB package
       run: |
         cd build
-        cpack -G DEB  # Запуск CPack
+        cpack -G DEB
+
+    - name: Create Git Tag
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const tag = `v1.0.0-${process.env.GITHUB_RUN_NUMBER}`;
+          await github.rest.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: `refs/tags/${tag}`,
+            sha: context.sha
+          });
+          return tag;
 
     - name: Upload Release
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: v1.0.0-${{ github.run_number }}
         files: build/*.deb
