@@ -15,8 +15,8 @@ jobs:
 
     - name: Clean and prepare build directory
       run: |
-        rm -rf build    # Удаляем старую папку, если она есть
-        mkdir -p build  # Создаем новую
+        rm -rf build
+        mkdir -p build
 
     - name: Build
       run: |
@@ -28,7 +28,7 @@ jobs:
     - name: Create DEB package
       run: |
         cd build
-        cpack -G DEB
+        cpack -G DEB  # Запуск CPack
 
     - name: Upload Release
       uses: softprops/action-gh-release@v1
