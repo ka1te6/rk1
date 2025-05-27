@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:  # Добавляем права для токена
+    permissions:
       contents: write
 
     steps:
