@@ -1,2 +1,0 @@
-/usr/bin/ar qc libBridgeLib.a CMakeFiles/BridgeLib.dir/src/CommunicationDevice.cpp.o CMakeFiles/BridgeLib.dir/src/SerialDevice.cpp.o CMakeFiles/BridgeLib.dir/src/hdlc.cpp.o CMakeFiles/BridgeLib.dir/src/modbus.cpp.o
-/usr/bin/ranlib libBridgeLib.a
